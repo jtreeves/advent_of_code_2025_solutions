@@ -6,8 +6,12 @@ from utils.get_list_of_lines import get_list_of_lines
 from utils.SolutionResults import SolutionResults
 
 
-def generate_combinations(total_numbers: int) -> List[List[str]]:
+def generate_combinations_limited(total_numbers: int) -> List[List[str]]:
     return [list(comb) for comb in product(["+", "*"], repeat=total_numbers - 1)]
+
+
+def generate_combinations_full(total_numbers: int) -> List[List[str]]:
+    return [list(comb) for comb in product(["+", "*", "||"], repeat=total_numbers - 1)]
 
 
 def evaluate_expression(numbers: List[int], operators: List[str]) -> int:
@@ -17,24 +21,45 @@ def evaluate_expression(numbers: List[int], operators: List[str]) -> int:
             result += numbers[i]
         elif operators[i - 1] == "*":
             result *= numbers[i]
+        elif operators[i - 1] == "||":
+            result = int(f"{result}{numbers[i]}")
     return result
 
 
-def check_if_target_possible(description: str) -> bool:
+def check_if_target_possible_limited(description: str) -> bool:
     target_str, numbers_str = description.split(":")
     target = int(target_str.strip())
     numbers = list(map(int, numbers_str.strip().split()))
-    operator_combinations = generate_combinations(len(numbers))
+    operator_combinations = generate_combinations_limited(len(numbers))
     for operators in operator_combinations:
         if evaluate_expression(numbers, operators) == target:
             return True
     return False
 
 
-def get_all_successful_targets(descriptions: List[str]) -> List[int]:
+def check_if_target_possible_full(description: str) -> bool:
+    target_str, numbers_str = description.split(":")
+    target = int(target_str.strip())
+    numbers = list(map(int, numbers_str.strip().split()))
+    operator_combinations = generate_combinations_full(len(numbers))
+    for operators in operator_combinations:
+        if evaluate_expression(numbers, operators) == target:
+            return True
+    return False
+
+
+def get_all_successful_targets_limited(descriptions: List[str]) -> List[int]:
     successful_targets = []
     for description in descriptions:
-        if check_if_target_possible(description):
+        if check_if_target_possible_limited(description):
+            successful_targets.append(int(description.split(":")[0].strip()))
+    return successful_targets
+
+
+def get_all_successful_targets_full(descriptions: List[str]) -> List[int]:
+    successful_targets = []
+    for description in descriptions:
+        if check_if_target_possible_full(description):
             successful_targets.append(int(description.split(":")[0].strip()))
     return successful_targets
 
@@ -50,9 +75,10 @@ def solve_problem(is_official: bool) -> SolutionResults:
     start_time = time.time()
     data = extract_data_from_file(7, is_official)
     rows = get_list_of_lines(data)
-    successful_targets = get_all_successful_targets(rows)
-    part_1 = sum_successful_targets(successful_targets)
-    part_2 = len(rows)
+    successful_targets_limited = get_all_successful_targets_limited(rows)
+    successful_targets_full = get_all_successful_targets_full(rows)
+    part_1 = sum_successful_targets(successful_targets_limited)
+    part_2 = sum_successful_targets(successful_targets_full)
     end_time = time.time()
     execution_time = end_time - start_time
     results = SolutionResults(7, part_1, part_2, execution_time)
