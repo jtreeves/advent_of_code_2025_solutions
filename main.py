@@ -12,19 +12,6 @@ from day_9.solution import solve_problem as solve_9
 from day_10.solution import solve_problem as solve_10
 from day_11.solution import solve_problem as solve_11
 from day_12.solution import solve_problem as solve_12
-from day_13.solution import solve_problem as solve_13
-from day_14.solution import solve_problem as solve_14
-from day_15.solution import solve_problem as solve_15
-from day_16.solution import solve_problem as solve_16
-from day_17.solution import solve_problem as solve_17
-from day_18.solution import solve_problem as solve_18
-from day_19.solution import solve_problem as solve_19
-from day_20.solution import solve_problem as solve_20
-from day_21.solution import solve_problem as solve_21
-from day_22.solution import solve_problem as solve_22
-from day_23.solution import solve_problem as solve_23
-from day_24.solution import solve_problem as solve_24
-from day_25.solution import solve_problem as solve_25
 
 solve_functions_mapper = {
     1: solve_1,
@@ -39,19 +26,6 @@ solve_functions_mapper = {
     10: solve_10,
     11: solve_11,
     12: solve_12,
-    13: solve_13,
-    14: solve_14,
-    15: solve_15,
-    16: solve_16,
-    17: solve_17,
-    18: solve_18,
-    19: solve_19,
-    20: solve_20,
-    21: solve_21,
-    22: solve_22,
-    23: solve_23,
-    24: solve_24,
-    25: solve_25,
 }
 
 
@@ -72,7 +46,7 @@ def print_solutions_for_all_active_days(is_official: bool) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Print solution for day")
-    parser.add_argument("day", type=int, choices=range(1, 25 + 1), nargs="?", default=0, help="Select which day's solutions to display")
+    parser.add_argument("day", type=int, choices=range(1, 12 + 1), nargs="?", default=0, help="Select which day's solutions to display")
     parser.add_argument("is_official", choices=["True", "False"], nargs="?", default="True", help="Select True to work with the final data or False to work with the practice data")
     args = parser.parse_args()
     is_official = True if args.is_official == "True" else False

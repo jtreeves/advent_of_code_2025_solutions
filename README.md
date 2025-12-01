@@ -1,8 +1,8 @@
-# Advent of Code: 2024 - Solutions
+# Advent of Code: 2025 - Solutions
 
 _My solutions to the annual challenge problems_
 
-This repo contains my solutions to the **Advent of Code** challenge problems from [2024](https://adventofcode.com/2024). The code is written in **Python**. It pairs with my [calendar repo](https://github.com/jtreeves/advent-of-code-2024-calendar).
+This repo contains my solutions to the **Advent of Code** challenge problems from [2025](https://adventofcode.com/2025). The code is written in **Python**.
 
 ## Setup
 
@@ -12,7 +12,7 @@ This repo contains my solutions to the **Advent of Code** challenge problems fro
 
 ### Installation
 
-1.  Clone this repository: `git clone https://github.com/jtreeves/advent_of_code_2024_solutions.git`
+1.  Clone this repository: `git clone https://github.com/jtreeves/advent_of_code_2025_solutions.git`
 2.  Enter the newly created directory, then create an environment for it: `python3 -m venv aocenv`
 3.  Activate the new environment: `source aocenv/bin/activate`
 4.  Install requirements: `pip3 install -r requirements.txt`

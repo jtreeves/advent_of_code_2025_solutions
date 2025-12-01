@@ -1,6 +1,6 @@
 # Day 12
 
-[Name](https://adventofcode.com/2024/day/12)
+[Name](https://adventofcode.com/2025/day/12)
 
 ## Part One
 
