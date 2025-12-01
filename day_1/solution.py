@@ -15,6 +15,8 @@ def stay_in_circle(evaluated_number: int) -> int:
     gt_max = evaluated_number > 99
     lt_min = evaluated_number < 0
     result = evaluated_number - 100 if gt_max else 100 + evaluated_number if lt_min else evaluated_number
+    if result > 99 or result < 0:
+        result = stay_in_circle(result)
     return result
 
 
