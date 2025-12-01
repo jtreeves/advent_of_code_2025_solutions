@@ -69,6 +69,8 @@ Analyze the rotations in your attached document. What's the actual password to o
 
 ### Solution
 
+507 // too low
+
 ## Part Two
 
 ### Problem
